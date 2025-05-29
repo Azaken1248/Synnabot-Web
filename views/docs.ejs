@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Synnabot Docs</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Synnabot Commands Documentation</h1>
+      <p class="subtitle">Welcome to the official documentation for your Discord bot. Here you'll find a comprehensive list of commands, their usage, and permissions.</p>
+      <p class="subtitle">💡 Tip: Prefix <code>!</code> is required (e.g., <code>!ping</code>)</p>
+      <div class="buttons" style="margin-top: 20px;">
+        <a class="button secondary" href="/">← Back to Home</a>
+      </div>
+    </header>
+
+    <section class="commands-preview">
+      <h2>📜 Command List</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Command</th>
+            <th>Description</th>
+            <th>Usage</th>
+            <th>Permissions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>!ping</code></td><td>Replies with "Pong!"</td><td><code>!ping</code></td><td><span class="status-tag online">Everyone</span></td></tr>
+          <tr><td><code>!hello</code></td><td>Replies with a greeting</td><td><code>!hello</code></td><td><span class="status-tag online">Everyone</span></td></tr>
+          <tr><td><code>!add</code></td><td>Adds two numbers</td><td><code>!add 5 10</code></td><td><span class="status-tag online">Everyone</span></td></tr>
+          <tr><td><code>!streamers</code></td><td>Lists all 🎬 Streamer users</td><td><code>!streamers</code></td><td><span class="status-tag online">Everyone</span></td></tr>
+          <tr><td><code>!setbirthday</code></td><td>Set birthday for user</td><td><code>!setbirthday @User 29 03</code></td><td><span class="status-tag offline">Mod Only</span></td></tr>
+          <tr><td><code>!birthday</code></td><td>Gets birthday of a user</td><td><code>!birthday @User</code></td><td><span class="status-tag online">Everyone</span></td></tr>
+          <tr><td><code>!settimezone</code></td><td>Set timezone for a user</td><td><code>!settimezone @User UTC+6:30</code></td><td><span class="status-tag offline">Mod Only</span></td></tr>
+          <tr><td><code>!time</code></td><td>Gets user’s current time</td><td><code>!time @User</code></td><td><span class="status-tag online">Everyone</span></td></tr>
+          <tr><td><code>!settwitch</code></td><td>Link Twitch username</td><td><code>!settwitch @User &lt;username&gt;</code></td><td><span class="status-tag offline">Mod Only</span></td></tr>
+          <tr><td><code>!streamlinks</code></td><td>List streamers and Twitch links</td><td><code>!streamlinks</code></td><td><span class="status-tag online">Everyone</span></td></tr>
+          <tr><td><code>!ask</code></td><td>Ask Gemini AI</td><td><code>!ask &lt;question&gt;</code></td><td><span class="status-tag online">Everyone</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="commands-preview">
+      <h2>🛠️ Example Command Usage</h2>
+      <pre><code>!ping
+# ➜ Pong!
+
+!hello
+# ➜ Hello @Syn
+
+!add 5 15
+# ➜ The sum is 20
+
+!setbirthday @Syn 29 3
+# ➜ 🎉 Set birthday for Syn to 29 Mar
+
+!settimezone @Syn UTC+6:30
+# ➜ 🌍 Set timezone for Syn to Asia/Kolkata
+
+!time @Syn
+# ➜ 🕒 Time for Syn: Sunday, April 6th 2025, 4:15 PM (UTC+6:30)
+
+!settwitch @Syn St_Synna
+# ➜ ✅ Updated Twitch link for Syn to St_Synna
+
+!streamlinks
+# ➜ 
+Discord User (ID)             | Twitch Username
+-----------------------------------------------
+azakenR (867113282929557514)  | azakenr
+Syn (953502362474000434)      | st_synna
+kyoudai7 (972582587996455022) | kyoudai7
+
+!ask What is the capital of France?
+# ➜ The capital of France is Paris</code></pre>
+    </section>
+
+    <footer>
+      &copy; 2025 Synnabot | All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>

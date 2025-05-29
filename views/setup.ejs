@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Set Up Synnabot Locally</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Set Up Synnabot Locally</h1>
+      <p class="subtitle">Host your own AI-powered Discord assistant in just a few steps.</p>
+    </header>
+
+    <main class="setup-steps">
+      <section>
+        <h2>Prerequisites</h2>
+        <ul>
+          <li><a href="https://nodejs.org/en/download" target="_blank">Node.js v18 or above</a></li>
+          <li><a href="https://discord.com/developers/applications" target="_blank">Discord Developer Account</a></li>
+          <li><a href="https://dev.twitch.tv/console/apps" target="_blank">Twitch Developer App</a></li>
+          <li><a href="https://www.mongodb.com/cloud/atlas/register" target="_blank">MongoDB Atlas Account</a></li>
+          <li><a href="https://console.cloud.google.com/apis" target="_blank">Google Cloud API Key</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Step 1: Clone the Repository</h2>
+        <pre><code>git clone https://github.com/YOUR_USERNAME/synnabot.git
+cd synnabot
+npm install</code></pre>
+        <p>This installs all required dependencies listed in <code>package.json</code>.</p>
+      </section>
+
+      <section>
+        <h2>Step 2: Configure Environment Variables</h2>
+        <p>Create the following <strong>.env</strong> files and add your credentials:</p>
+
+        <h3><code>/.env</code></h3>
+        <pre><code>DISCORD_BOT_TOKEN=
+CLIENT_ID=
+GUILD_ID=
+MONGO_USERNAME=
+MONGO_PASSWORD=
+MONGO_CLUSTER=
+MONGO_DATABASE=
+TWITCH_CLIENT_ID=
+TWITCH_CLIENT_SECRET=
+GOOGLE_API=</code></pre>
+
+        <h3><code>/utils/discord/.env</code></h3>
+        <pre><code>DISCORD_BOT_TOKEN=
+CLIENT_ID=
+DISCORD_GUILD_ID=
+TWITCH_CLIENT_ID=
+TWITCH_CLIENT_SECRET=
+GOOGLE_API=</code></pre>
+
+        <h3><code>/DB/.env</code></h3>
+        <pre><code>CLIENT_ID=
+MONGO_USERNAME=
+MONGO_PASSWORD=
+MONGO_CLUSTER=
+MONGO_DATABASE=</code></pre>
+
+        <p class="note">You can reuse the same values across the different files where applicable.</p>
+      </section>
+
+      <section>
+        <h2>Step 3: Set Up External Services</h2>
+
+        <h3>Discord Developer Portal</h3>
+        <ul>
+          <li>Create a new application at <a href="https://discord.com/developers/applications" target="_blank">Discord Developer Portal</a></li>
+          <li>Under the "Bot" tab, add a bot and copy the token into <code>DISCORD_BOT_TOKEN</code>.</li>
+          <li>Under the "OAuth2" tab, copy your <code>CLIENT_ID</code>.</li>
+        </ul>
+
+        <h3>Twitch Developer Console</h3>
+        <ul>
+          <li>Visit the <a href="https://dev.twitch.tv/console/apps" target="_blank">Twitch Developer Console</a></li>
+          <li>Create an app and copy your <code>Client ID</code> and <code>Client Secret</code>.</li>
+        </ul>
+
+        <h3>MongoDB Atlas</h3>
+        <ul>
+          <li>Register at <a href="https://www.mongodb.com/cloud/atlas/register" target="_blank">MongoDB Atlas</a></li>
+          <li>Create a cluster and a database user. Use these credentials in your .env files.</li>
+        </ul>
+
+        <h3>Google Cloud Platform</h3>
+        <ul>
+          <li>Open the <a href="https://console.cloud.google.com/apis" target="_blank">Google Cloud Console</a></li>
+          <li>Enable the Gemini AI / Generative Language API.</li>
+          <li>Generate and copy your API key for use in the <code>GOOGLE_API</code> variable.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Step 4: Run the Bot</h2>
+        <pre><code>node index.mjs</code></pre>
+        <p>If configured correctly, Synnabot will connect to Discord, MongoDB, and Twitch.</p>
+      </section>
+
+      <section class="buttons">
+        <a href="/" class="button no-underline">← Back to Home</a>
+        <a href="https://github.com/Azaken1248/synnabot" target="_blank" class="button secondary">View on GitHub</a>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; <%= new Date().getFullYear() %> Synnabot | Built by Azaken</p>
+    </footer>
+  </div>
+</body>
+</html>

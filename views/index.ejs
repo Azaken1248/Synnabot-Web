@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Synnabot Status</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Synnabot</h1>
+      <p class="subtitle">A Powerful Discord Companion</p>
+    </header>
+
+    <main>
+        <section class="status-box">
+            <h2>Bot Status</h2>
+            <span class="status-tag <%= status === 'online' ? 'online' : 'offline' %>">
+                <%= status.charAt(0).toUpperCase() + status.slice(1) %>
+            </span>
+        </section>
+
+        <section class="about">
+            <h2>What is Synnabot?</h2>
+            <p>Synnabot is a modern Discord bot built to empower your server with moderation tools, utilities, streamer integration, and smart AI assistance — all in one sleek package.</p>
+        </section>
+
+        <section class="features">
+            <div class="feature">
+            <h3>✨ Smart Commands</h3>
+            <p>Custom commands like <code>!ask</code> powered by Gemini AI let users get instant answers.</p>
+            </div>
+            <div class="feature">
+            <h3>🛡️ Role-Based Controls</h3>
+            <p>Only trusted roles can run sensitive commands like setting birthdays or linking Twitch.</p>
+            </div>
+            <div class="feature">
+            <h3>📅 Timezone & Birthday Tools</h3>
+            <p>Track birthdays and show local time for users based on their timezone.</p>
+            </div>
+            <div class="feature">
+            <h3>🎮 Twitch Integration</h3>
+            <p>Keep your community updated with live streamer links and Twitch usernames.</p>
+            </div>
+        </section>
+
+        <section class="commands-preview">
+            <h2>Quick Command Examples</h2>
+            <div class="cmd-list">
+            <code>!ping</code>
+            <code>!add 5 10</code>
+            <code>!setbirthday @User 29 03</code>
+            <code>!ask What is AI?</code>
+            </div>
+            <a href="/docs" class="button">View Full Documentation</a>
+        </section>
+
+        <section class="buttons">
+            <a href="/setup" class="button secondary">Set Up Locally</a>
+        </section>  
+        </main>
+
+
+    <footer>
+      <p>&copy; <%= new Date().getFullYear() %> Synnabot | Built by Azaken</p>
+    </footer>
+  </div>
+</body>
+</html>
