@@ -4,68 +4,132 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Synnabot Status</title>
+  <link rel="icon" type="image/png" href="/assets/icon.png">
   <link rel="stylesheet" href="/styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
+  
+  <nav class="navbar motion-hide">
+    <a href="/" class="nav-brand">
+      <img src="/assets/icon.png" alt="Synnabot Logo">
+      <span>Synnabot</span>
+    </a>
+    
+    <button class="menu-toggle" id="menuToggle">
+      <i class="ph ph-list"></i>
+    </button>
+
+    <div class="nav-links">
+      <a href="/" class="nav-item active"><i class="ph ph-house"></i> Home</a>
+      <a href="/docs" class="nav-item"><i class="ph ph-list-dashes"></i> Commands</a>
+      <a href="/setup" class="nav-item"><i class="ph ph-wrench"></i> Setup</a>
+    </div>
+  </nav>
+
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="nav-drawer" id="navDrawer">
+    <a href="/" class="nav-item active"><i class="ph ph-house"></i> Home</a>
+    <a href="/docs" class="nav-item"><i class="ph ph-list-dashes"></i> Commands</a>
+    <a href="/setup" class="nav-item"><i class="ph ph-wrench"></i> Setup</a>
+  </div>
+
+  <div class="hero motion-hide">
+    <img src="/assets/icon.png" alt="Synnabot Mascot" class="hero-img" />
+    
+    <div class="hero-status-pill <%= status === 'online' ? 'online' : 'offline' %>">
+        <i class="ph <%= status === 'online' ? 'ph-check-circle' : 'ph-x-circle' %>"></i>
+        <%= status.charAt(0).toUpperCase() + status.slice(1) %>
+    </div>
+
+    <div class="pre-title">WELCOME TO</div>
+    <h1 class="hero-title">Synnabot</h1>
+    <p class="subtitle">Your friendly server companion powered by Gemini AI, providing powerful moderation tools and timezone utilities.</p>
+  </div>
+
   <div class="container">
-    <header>
-      <h1>Synnabot</h1>
-      <p class="subtitle">A Powerful Discord Companion</p>
-    </header>
-
     <main>
-        <section class="status-box">
-            <h2>Bot Status</h2>
-            <span class="status-tag <%= status === 'online' ? 'online' : 'offline' %>">
-                <%= status.charAt(0).toUpperCase() + status.slice(1) %>
-            </span>
-        </section>
+      <section class="bento-card about motion-hide">
+          <h2>What is Synnabot?</h2>
+          <p>Synnabot is a modern Discord bot built to empower your server with moderation tools, utilities, streamer integration, and smart AI assistance — all in one sleek package.</p>
+      </section>
 
-        <section class="about">
-            <h2>What is Synnabot?</h2>
-            <p>Synnabot is a modern Discord bot built to empower your server with moderation tools, utilities, streamer integration, and smart AI assistance — all in one sleek package.</p>
-        </section>
-
-        <section class="features">
-            <div class="feature">
-            <h3>✨ Smart Commands</h3>
+      <section class="features bento-grid-2">
+          <div class="bento-card feature motion-hide" style="opacity: 0;">
+            <h3><i class="ph ph-sparkle"></i> Smart Commands</h3>
             <p>Custom commands like <code>!ask</code> powered by Gemini AI let users get instant answers.</p>
-            </div>
-            <div class="feature">
-            <h3>🛡️ Role-Based Controls</h3>
+          </div>
+          <div class="bento-card feature motion-hide" style="opacity: 0;">
+            <h3><i class="ph ph-shield-check"></i> Role-Based Controls</h3>
             <p>Only trusted roles can run sensitive commands like setting birthdays or linking Twitch.</p>
-            </div>
-            <div class="feature">
-            <h3>📅 Timezone & Birthday Tools</h3>
+          </div>
+          <div class="bento-card feature motion-hide" style="opacity: 0;">
+            <h3><i class="ph ph-calendar-blank"></i> Timezone & Birthday</h3>
             <p>Track birthdays and show local time for users based on their timezone.</p>
-            </div>
-            <div class="feature">
-            <h3>🎮 Twitch Integration</h3>
+          </div>
+          <div class="bento-card feature motion-hide" style="opacity: 0;">
+            <h3><i class="ph ph-twitch-logo"></i> Twitch Integration</h3>
             <p>Keep your community updated with live streamer links and Twitch usernames.</p>
-            </div>
-        </section>
+          </div>
+      </section>
 
-        <section class="commands-preview">
-            <h2>Quick Command Examples</h2>
-            <div class="cmd-list">
+      <section class="bento-card commands-preview motion-hide">
+          <h2><i class="ph ph-terminal-window"></i> Quick Command Examples</h2>
+          <div class="cmd-list">
             <code>!ping</code>
             <code>!add 5 10</code>
             <code>!setbirthday @User 29 03</code>
             <code>!ask What is AI?</code>
-            </div>
-            <a href="/docs" class="button">View Full Documentation</a>
-        </section>
+          </div>
+          <div style="margin-top: 24px;">
+            <a href="/docs" class="button">View Full Documentation <i class="ph ph-arrow-right"></i></a>
+          </div>
+      </section>
+    </main>
 
-        <section class="buttons">
-            <a href="/setup" class="button secondary">Set Up Locally</a>
-        </section>  
-        </main>
-
-
-    <footer>
+    <footer class="motion-hide">
       <p>&copy; <%= new Date().getFullYear() %> Synnabot | Built by Azaken</p>
     </footer>
   </div>
+
+  <script type="module">
+    import { animate, inView, stagger } from "https://esm.sh/framer-motion";
+    
+    // Header & Navbar animation
+    animate(".navbar", { opacity: [0, 1], y: [-20, 0] }, { duration: 0.6, easing: "easeOut" });
+    animate(".hero", { opacity: [0, 1], y: [30, 0] }, { duration: 0.8, delay: 0.2, easing: "easeOut" });
+
+    // Drawer Logic
+    const menuToggle = document.getElementById('menuToggle');
+    const navDrawer = document.getElementById('navDrawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+
+    function toggleDrawer() {
+      navDrawer.classList.toggle('open');
+      drawerOverlay.classList.toggle('open');
+    }
+
+    menuToggle.addEventListener('click', toggleDrawer);
+    drawerOverlay.addEventListener('click', toggleDrawer);
+
+    // Stagger animation for bento cards (except features which we stagger separately)
+    inView(".bento-card:not(.feature)", (el) => {
+      animate(el, { opacity: [0, 1], y: [30, 0] }, { duration: 0.6, delay: 0.2 });
+    });
+
+    inView(".commands-preview", (el) => {
+        animate(el, { opacity: [0, 1], y: [30, 0] }, { duration: 0.6, delay: 0.2 });
+    });
+
+    inView("footer", (el) => {
+        animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6 });
+    });
+
+    // Stagger feature cards specifically
+    inView(".features", () => {
+      animate(".feature", { opacity: [0, 1], y: [30, 0] }, { delay: stagger(0.15, { startDelay: 0.2 }), duration: 0.6, easing: "easeOut" });
+    });
+  </script>
 </body>
 </html>

@@ -4,48 +4,82 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Synnabot Docs</title>
+  <link rel="icon" type="image/png" href="/assets/icon.png">
   <link rel="stylesheet" href="/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
+  <nav class="navbar motion-hide">
+    <a href="/" class="nav-brand">
+      <img src="/assets/icon.png" alt="Synnabot Logo">
+      <span>Synnabot</span>
+    </a>
+    
+    <button class="menu-toggle" id="menuToggle">
+      <i class="ph ph-list"></i>
+    </button>
+
+    <div class="nav-links">
+      <a href="/" class="nav-item"><i class="ph ph-house"></i> Home</a>
+      <a href="/docs" class="nav-item active"><i class="ph ph-list-dashes"></i> Commands</a>
+      <a href="/setup" class="nav-item"><i class="ph ph-wrench"></i> Setup</a>
+    </div>
+  </nav>
+
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="nav-drawer" id="navDrawer">
+    <a href="/" class="nav-item"><i class="ph ph-house"></i> Home</a>
+    <a href="/docs" class="nav-item active"><i class="ph ph-list-dashes"></i> Commands</a>
+    <a href="/setup" class="nav-item"><i class="ph ph-wrench"></i> Setup</a>
+  </div>
+
   <div class="container">
-    <header>
-      <h1>Synnabot Commands Documentation</h1>
-      <p class="subtitle">Welcome to the official documentation for your Discord bot. Here you'll find a comprehensive list of commands, their usage, and permissions.</p>
-      <p class="subtitle">💡 Tip: Prefix <code>!</code> is required (e.g., <code>!ping</code>)</p>
-      <div class="buttons" style="margin-top: 20px;">
-        <a class="button secondary" href="/">← Back to Home</a>
+    <header class="motion-hide">
+      <h1>Commands Documentation</h1>
+      <p class="subtitle">Comprehensive list of commands, usage, and permissions.</p>
+      
+      <div class="note" style="max-width: 400px; margin: 24px auto;">
+        <i class="ph ph-lightbulb"></i>
+        <span>Tip: Prefix <code>!</code> is required (e.g., <code>!ping</code>)</span>
+      </div>
+
+      <div class="buttons" style="margin-top: 24px;">
+        <a class="button secondary" href="/"><i class="ph ph-arrow-left"></i> Back to Home</a>
       </div>
     </header>
 
-    <section class="commands-preview">
-      <h2>📜 Command List</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Command</th>
-            <th>Description</th>
-            <th>Usage</th>
-            <th>Permissions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td><code>!ping</code></td><td>Replies with "Pong!"</td><td><code>!ping</code></td><td><span class="status-tag online">Everyone</span></td></tr>
-          <tr><td><code>!hello</code></td><td>Replies with a greeting</td><td><code>!hello</code></td><td><span class="status-tag online">Everyone</span></td></tr>
-          <tr><td><code>!add</code></td><td>Adds two numbers</td><td><code>!add 5 10</code></td><td><span class="status-tag online">Everyone</span></td></tr>
-          <tr><td><code>!streamers</code></td><td>Lists all 🎬 Streamer users</td><td><code>!streamers</code></td><td><span class="status-tag online">Everyone</span></td></tr>
-          <tr><td><code>!setbirthday</code></td><td>Set birthday for user</td><td><code>!setbirthday @User 29 03</code></td><td><span class="status-tag offline">Mod Only</span></td></tr>
-          <tr><td><code>!birthday</code></td><td>Gets birthday of a user</td><td><code>!birthday @User</code></td><td><span class="status-tag online">Everyone</span></td></tr>
-          <tr><td><code>!settimezone</code></td><td>Set timezone for a user</td><td><code>!settimezone @User UTC+6:30</code></td><td><span class="status-tag offline">Mod Only</span></td></tr>
-          <tr><td><code>!time</code></td><td>Gets user’s current time</td><td><code>!time @User</code></td><td><span class="status-tag online">Everyone</span></td></tr>
-          <tr><td><code>!settwitch</code></td><td>Link Twitch username</td><td><code>!settwitch @User &lt;username&gt;</code></td><td><span class="status-tag offline">Mod Only</span></td></tr>
-          <tr><td><code>!streamlinks</code></td><td>List streamers and Twitch links</td><td><code>!streamlinks</code></td><td><span class="status-tag online">Everyone</span></td></tr>
-          <tr><td><code>!ask</code></td><td>Ask Gemini AI</td><td><code>!ask &lt;question&gt;</code></td><td><span class="status-tag online">Everyone</span></td></tr>
-        </tbody>
-      </table>
+    <section class="bento-card commands-preview motion-hide" style="opacity: 0;">
+      <h2><i class="ph ph-list-dashes"></i> Command List</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>Description</th>
+              <th>Usage</th>
+              <th>Permissions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>!ping</code></td><td>Replies with "Pong!"</td><td><code>!ping</code></td><td><span class="status-tag online"><i class="ph ph-users"></i> Everyone</span></td></tr>
+            <tr><td><code>!hello</code></td><td>Replies with a greeting</td><td><code>!hello</code></td><td><span class="status-tag online"><i class="ph ph-users"></i> Everyone</span></td></tr>
+            <tr><td><code>!add</code></td><td>Adds two numbers</td><td><code>!add 5 10</code></td><td><span class="status-tag online"><i class="ph ph-users"></i> Everyone</span></td></tr>
+            <tr><td><code>!streamers</code></td><td>Lists all <i class="ph ph-video-camera"></i> Streamer users</td><td><code>!streamers</code></td><td><span class="status-tag online"><i class="ph ph-users"></i> Everyone</span></td></tr>
+            <tr><td><code>!setbirthday</code></td><td>Set birthday for user</td><td><code>!setbirthday @User 29 03</code></td><td><span class="status-tag offline"><i class="ph ph-shield-star"></i> Mod Only</span></td></tr>
+            <tr><td><code>!birthday</code></td><td>Gets birthday of a user</td><td><code>!birthday @User</code></td><td><span class="status-tag online"><i class="ph ph-users"></i> Everyone</span></td></tr>
+            <tr><td><code>!settimezone</code></td><td>Set timezone for a user</td><td><code>!settimezone @User UTC+6:30</code></td><td><span class="status-tag offline"><i class="ph ph-shield-star"></i> Mod Only</span></td></tr>
+            <tr><td><code>!time</code></td><td>Gets user’s current time</td><td><code>!time @User</code></td><td><span class="status-tag online"><i class="ph ph-users"></i> Everyone</span></td></tr>
+            <tr><td><code>!settwitch</code></td><td>Link Twitch username</td><td><code>!settwitch @User &lt;username&gt;</code></td><td><span class="status-tag offline"><i class="ph ph-shield-star"></i> Mod Only</span></td></tr>
+            <tr><td><code>!streamlinks</code></td><td>List streamers and Twitch links</td><td><code>!streamlinks</code></td><td><span class="status-tag online"><i class="ph ph-users"></i> Everyone</span></td></tr>
+            <tr><td><code>!ask</code></td><td>Ask Gemini AI</td><td><code>!ask &lt;question&gt;</code></td><td><span class="status-tag online"><i class="ph ph-users"></i> Everyone</span></td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
-    <section class="commands-preview">
-      <h2>🛠️ Example Command Usage</h2>
+    <section class="bento-card commands-preview motion-hide" style="opacity: 0; margin-top: 24px;">
+      <h2><i class="ph ph-wrench"></i> Example Command Usage</h2>
       <pre><code>!ping
 # ➜ Pong!
 
@@ -56,16 +90,16 @@
 # ➜ The sum is 20
 
 !setbirthday @Syn 29 3
-# ➜ 🎉 Set birthday for Syn to 29 Mar
+# ➜ Set birthday for Syn to 29 Mar
 
 !settimezone @Syn UTC+6:30
-# ➜ 🌍 Set timezone for Syn to Asia/Kolkata
+# ➜ Set timezone for Syn to Asia/Kolkata
 
 !time @Syn
-# ➜ 🕒 Time for Syn: Sunday, April 6th 2025, 4:15 PM (UTC+6:30)
+# ➜ Time for Syn: Sunday, April 6th 2025, 4:15 PM (UTC+6:30)
 
 !settwitch @Syn St_Synna
-# ➜ ✅ Updated Twitch link for Syn to St_Synna
+# ➜ Updated Twitch link for Syn to St_Synna
 
 !streamlinks
 # ➜ 
@@ -79,9 +113,39 @@ kyoudai7 (972582587996455022) | kyoudai7
 # ➜ The capital of France is Paris</code></pre>
     </section>
 
-    <footer>
-      &copy; 2025 Synnabot | All rights reserved.
+    <footer class="motion-hide" style="opacity: 0;">
+      <p>&copy; 2025 Synnabot | All rights reserved.</p>
     </footer>
   </div>
+
+  <script type="module">
+    import { animate, inView, stagger } from "https://esm.sh/framer-motion";
+    
+    // Header animation
+    animate(".navbar", { opacity: [0, 1], y: [-20, 0] }, { duration: 0.6, easing: "easeOut" });
+    animate("header", { opacity: [0, 1], y: [30, 0] }, { duration: 0.8, delay: 0.2, easing: "easeOut" });
+
+    // Drawer Logic
+    const menuToggle = document.getElementById('menuToggle');
+    const navDrawer = document.getElementById('navDrawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+
+    function toggleDrawer() {
+      navDrawer.classList.toggle('open');
+      drawerOverlay.classList.toggle('open');
+    }
+
+    menuToggle.addEventListener('click', toggleDrawer);
+    drawerOverlay.addEventListener('click', toggleDrawer);
+
+    // Stagger animation for bento cards
+    inView(".commands-preview", (el) => {
+      animate(el, { opacity: [0, 1], y: [30, 0] }, { duration: 0.6, delay: 0.2 });
+    });
+
+    inView("footer", (el) => {
+        animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, delay: 0.2 });
+    });
+  </script>
 </body>
 </html>

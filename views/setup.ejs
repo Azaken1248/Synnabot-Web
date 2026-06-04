@@ -4,19 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Set Up Synnabot Locally</title>
+  <link rel="icon" type="image/png" href="/assets/icon.png">
   <link rel="stylesheet" href="/styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
+  <nav class="navbar motion-hide">
+    <a href="/" class="nav-brand">
+      <img src="/assets/icon.png" alt="Synnabot Logo">
+      <span>Synnabot</span>
+    </a>
+    
+    <button class="menu-toggle" id="menuToggle">
+      <i class="ph ph-list"></i>
+    </button>
+
+    <div class="nav-links">
+      <a href="/" class="nav-item"><i class="ph ph-house"></i> Home</a>
+      <a href="/docs" class="nav-item"><i class="ph ph-list-dashes"></i> Commands</a>
+      <a href="/setup" class="nav-item active"><i class="ph ph-wrench"></i> Setup</a>
+    </div>
+  </nav>
+
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="nav-drawer" id="navDrawer">
+    <a href="/" class="nav-item"><i class="ph ph-house"></i> Home</a>
+    <a href="/docs" class="nav-item"><i class="ph ph-list-dashes"></i> Commands</a>
+    <a href="/setup" class="nav-item active"><i class="ph ph-wrench"></i> Setup</a>
+  </div>
+
   <div class="container">
-    <header>
+    <header class="motion-hide">
       <h1>Set Up Synnabot Locally</h1>
       <p class="subtitle">Host your own AI-powered Discord assistant in just a few steps.</p>
     </header>
 
     <main class="setup-steps">
-      <section>
-        <h2>Prerequisites</h2>
+      <section class="bento-card motion-hide step-card" style="opacity: 0;">
+        <h2><i class="ph ph-list-checks"></i> Prerequisites</h2>
         <ul>
           <li><a href="https://nodejs.org/en/download" target="_blank">Node.js v18 or above</a></li>
           <li><a href="https://discord.com/developers/applications" target="_blank">Discord Developer Account</a></li>
@@ -26,17 +52,17 @@
         </ul>
       </section>
 
-      <section>
-        <h2>Step 1: Clone the Repository</h2>
+      <section class="bento-card motion-hide step-card" style="opacity: 0; margin-top: 24px;">
+        <h2><i class="ph ph-git-branch"></i> Step 1: Clone the Repository</h2>
         <pre><code>git clone https://github.com/YOUR_USERNAME/synnabot.git
 cd synnabot
 npm install</code></pre>
-        <p>This installs all required dependencies listed in <code>package.json</code>.</p>
+        <p style="color: var(--subtext); font-size: 0.95rem;">This installs all required dependencies listed in <code>package.json</code>.</p>
       </section>
 
-      <section>
-        <h2>Step 2: Configure Environment Variables</h2>
-        <p>Create the following <strong>.env</strong> files and add your credentials:</p>
+      <section class="bento-card motion-hide step-card" style="opacity: 0; margin-top: 24px;">
+        <h2><i class="ph ph-file-code"></i> Step 2: Configure Environment Variables</h2>
+        <p style="color: var(--subtext); font-size: 0.95rem;">Create the following <strong>.env</strong> files and add your credentials:</p>
 
         <h3><code>/.env</code></h3>
         <pre><code>DISCORD_BOT_TOKEN=
@@ -65,11 +91,11 @@ MONGO_PASSWORD=
 MONGO_CLUSTER=
 MONGO_DATABASE=</code></pre>
 
-        <p class="note">You can reuse the same values across the different files where applicable.</p>
+        <p class="note"><i class="ph ph-info"></i> You can reuse the same values across the different files where applicable.</p>
       </section>
 
-      <section>
-        <h2>Step 3: Set Up External Services</h2>
+      <section class="bento-card motion-hide step-card" style="opacity: 0; margin-top: 24px;">
+        <h2><i class="ph ph-cloud-arrow-up"></i> Step 3: Set Up External Services</h2>
 
         <h3>Discord Developer Portal</h3>
         <ul>
@@ -98,21 +124,55 @@ MONGO_DATABASE=</code></pre>
         </ul>
       </section>
 
-      <section>
-        <h2>Step 4: Run the Bot</h2>
+      <section class="bento-card motion-hide step-card" style="opacity: 0; margin-top: 24px;">
+        <h2><i class="ph ph-play-circle"></i> Step 4: Run the Bot</h2>
         <pre><code>node index.mjs</code></pre>
-        <p>If configured correctly, Synnabot will connect to Discord, MongoDB, and Twitch.</p>
+        <p style="color: var(--subtext); font-size: 0.95rem;">If configured correctly, Synnabot will connect to Discord, MongoDB, and Twitch.</p>
       </section>
 
-      <section class="buttons">
-        <a href="/" class="button no-underline">← Back to Home</a>
-        <a href="https://github.com/Azaken1248/synnabot" target="_blank" class="button secondary">View on GitHub</a>
+      <section class="buttons motion-hide" style="opacity: 0;">
+        <a href="/" class="button secondary"><i class="ph ph-arrow-left"></i> Back to Home</a>
+        <a href="https://github.com/Azaken1248/synnabot" target="_blank" class="button"><i class="ph ph-github-logo"></i> View on GitHub</a>
       </section>
     </main>
 
-    <footer>
+    <footer class="motion-hide" style="opacity: 0;">
       <p>&copy; <%= new Date().getFullYear() %> Synnabot | Built by Azaken</p>
     </footer>
   </div>
+
+  <script type="module">
+    import { animate, inView, stagger } from "https://esm.sh/framer-motion";
+    
+    // Header animation
+    animate(".navbar", { opacity: [0, 1], y: [-20, 0] }, { duration: 0.6, easing: "easeOut" });
+    animate("header", { opacity: [0, 1], y: [30, 0] }, { duration: 0.8, delay: 0.2, easing: "easeOut" });
+
+    // Drawer Logic
+    const menuToggle = document.getElementById('menuToggle');
+    const navDrawer = document.getElementById('navDrawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+
+    function toggleDrawer() {
+      navDrawer.classList.toggle('open');
+      drawerOverlay.classList.toggle('open');
+    }
+
+    menuToggle.addEventListener('click', toggleDrawer);
+    drawerOverlay.addEventListener('click', toggleDrawer);
+
+    // Stagger animation for step cards
+    inView(".setup-steps", () => {
+      animate(".step-card", { opacity: [0, 1], y: [30, 0] }, { delay: stagger(0.15, { startDelay: 0.2 }), duration: 0.6, easing: "easeOut" });
+    });
+
+    inView(".buttons", (el) => {
+        animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, delay: 0.4 });
+    });
+
+    inView("footer", (el) => {
+        animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6 });
+    });
+  </script>
 </body>
 </html>
