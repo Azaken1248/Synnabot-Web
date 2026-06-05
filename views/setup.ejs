@@ -3,8 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Set Up Synnabot Locally</title>
+  <title>Synnabot — Setup Guide</title>
+  <meta name="description" content="Step-by-step guide to set up and self-host Synnabot, your AI-powered Discord bot with moderation, timezone, and Twitch integration.">
+  <meta name="theme-color" content="#fbbf24">
   <link rel="icon" type="image/png" href="/assets/icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Synnabot">
+  <meta property="og:title" content="Synnabot — Setup Guide">
+  <meta property="og:description" content="Step-by-step guide to set up and self-host Synnabot, your AI-powered Discord bot with moderation, timezone, and Twitch integration.">
+  <meta property="og:url" content="<%= baseUrl %>/setup">
+  <meta property="og:image" content="<%= baseUrl %>/assets/icon.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Synnabot — Setup Guide">
+  <meta name="twitter:description" content="Step-by-step guide to set up and self-host Synnabot, your AI-powered Discord bot with moderation, timezone, and Twitch integration.">
+  <meta name="twitter:image" content="<%= baseUrl %>/assets/icon.png">
   <link rel="stylesheet" href="/styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -52,7 +68,7 @@
         </ul>
       </section>
 
-      <section class="bento-card motion-hide step-card" style="opacity: 0; margin-top: 24px;">
+      <section class="bento-card motion-hide step-card" style="opacity: 0;">
         <h2><i class="ph ph-git-branch"></i> Step 1: Clone the Repository</h2>
         <pre><code>git clone https://github.com/YOUR_USERNAME/synnabot.git
 cd synnabot
@@ -60,7 +76,7 @@ npm install</code></pre>
         <p style="color: var(--subtext); font-size: 0.95rem;">This installs all required dependencies listed in <code>package.json</code>.</p>
       </section>
 
-      <section class="bento-card motion-hide step-card" style="opacity: 0; margin-top: 24px;">
+      <section class="bento-card motion-hide step-card" style="opacity: 0;">
         <h2><i class="ph ph-file-code"></i> Step 2: Configure Environment Variables</h2>
         <p style="color: var(--subtext); font-size: 0.95rem;">Create the following <strong>.env</strong> files and add your credentials:</p>
 
@@ -94,7 +110,7 @@ MONGO_DATABASE=</code></pre>
         <p class="note"><i class="ph ph-info"></i> You can reuse the same values across the different files where applicable.</p>
       </section>
 
-      <section class="bento-card motion-hide step-card" style="opacity: 0; margin-top: 24px;">
+      <section class="bento-card motion-hide step-card" style="opacity: 0;">
         <h2><i class="ph ph-cloud-arrow-up"></i> Step 3: Set Up External Services</h2>
 
         <h3>Discord Developer Portal</h3>
@@ -124,7 +140,7 @@ MONGO_DATABASE=</code></pre>
         </ul>
       </section>
 
-      <section class="bento-card motion-hide step-card" style="opacity: 0; margin-top: 24px;">
+      <section class="bento-card motion-hide step-card" style="opacity: 0;">
         <h2><i class="ph ph-play-circle"></i> Step 4: Run the Bot</h2>
         <pre><code>node index.mjs</code></pre>
         <p style="color: var(--subtext); font-size: 0.95rem;">If configured correctly, Synnabot will connect to Discord, MongoDB, and Twitch.</p>
@@ -143,12 +159,10 @@ MONGO_DATABASE=</code></pre>
 
   <script type="module">
     import { animate, inView, stagger } from "https://esm.sh/framer-motion";
-    
-    // Header animation
+
     animate(".navbar", { opacity: [0, 1], y: [-20, 0] }, { duration: 0.6, easing: "easeOut" });
     animate("header", { opacity: [0, 1], y: [30, 0] }, { duration: 0.8, delay: 0.2, easing: "easeOut" });
 
-    // Drawer Logic
     const menuToggle = document.getElementById('menuToggle');
     const navDrawer = document.getElementById('navDrawer');
     const drawerOverlay = document.getElementById('drawerOverlay');
@@ -161,7 +175,6 @@ MONGO_DATABASE=</code></pre>
     menuToggle.addEventListener('click', toggleDrawer);
     drawerOverlay.addEventListener('click', toggleDrawer);
 
-    // Stagger animation for step cards
     inView(".setup-steps", () => {
       animate(".step-card", { opacity: [0, 1], y: [30, 0] }, { delay: stagger(0.15, { startDelay: 0.2 }), duration: 0.6, easing: "easeOut" });
     });

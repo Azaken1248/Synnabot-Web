@@ -11,21 +11,27 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', async (_req, res) => {
+app.use((req, _res, next) => {
+  const protocol = req.headers['x-forwarded-proto'] || req.protocol;
+  req.baseUrl_full = `${protocol}://${req.get('host')}`;
+  next();
+});
+
+app.get('/', async (req, res) => {
   try {
     const { data } = await axios.get('https://synnabotapi.azaken.com/status', {timeout: 5000});
-    res.render('index', { status: data.status });
+    res.render('index', { status: data.status, baseUrl: req.baseUrl_full });
   } catch (err) {
-    res.render('index', { status: 'Unavailable' });
+    res.render('index', { status: 'Unavailable', baseUrl: req.baseUrl_full });
   }
 });
 
-app.get('/docs', (_req, res) => {
-  res.render('docs');
+app.get('/docs', (req, res) => {
+  res.render('docs', { baseUrl: req.baseUrl_full });
 });
 
-app.get('/setup', (_req, res) => {
-  res.render('setup');
+app.get('/setup', (req, res) => {
+  res.render('setup', { baseUrl: req.baseUrl_full });
 });
 
 app.listen(PORT, () => {

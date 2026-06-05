@@ -3,8 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Synnabot Status</title>
+  <title>Synnabot — Your AI-Powered Discord Companion</title>
+  <meta name="description" content="Synnabot is a modern Discord bot with AI-powered commands, moderation tools, timezone utilities, and Twitch integration.">
+  <meta name="theme-color" content="#fbbf24">
   <link rel="icon" type="image/png" href="/assets/icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Synnabot">
+  <meta property="og:title" content="Synnabot — Your AI-Powered Discord Companion">
+  <meta property="og:description" content="Synnabot is a modern Discord bot with AI-powered commands, moderation tools, timezone utilities, and Twitch integration.">
+  <meta property="og:url" content="<%= baseUrl %>/">
+  <meta property="og:image" content="<%= baseUrl %>/assets/icon.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Synnabot — Your AI-Powered Discord Companion">
+  <meta name="twitter:description" content="Synnabot is a modern Discord bot with AI-powered commands, moderation tools, timezone utilities, and Twitch integration.">
+  <meta name="twitter:image" content="<%= baseUrl %>/assets/icon.png">
   <link rel="stylesheet" href="/styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -95,12 +111,10 @@
 
   <script type="module">
     import { animate, inView, stagger } from "https://esm.sh/framer-motion";
-    
-    // Header & Navbar animation
+
     animate(".navbar", { opacity: [0, 1], y: [-20, 0] }, { duration: 0.6, easing: "easeOut" });
     animate(".hero", { opacity: [0, 1], y: [30, 0] }, { duration: 0.8, delay: 0.2, easing: "easeOut" });
 
-    // Drawer Logic
     const menuToggle = document.getElementById('menuToggle');
     const navDrawer = document.getElementById('navDrawer');
     const drawerOverlay = document.getElementById('drawerOverlay');
@@ -113,7 +127,6 @@
     menuToggle.addEventListener('click', toggleDrawer);
     drawerOverlay.addEventListener('click', toggleDrawer);
 
-    // Stagger animation for bento cards (except features which we stagger separately)
     inView(".bento-card:not(.feature)", (el) => {
       animate(el, { opacity: [0, 1], y: [30, 0] }, { duration: 0.6, delay: 0.2 });
     });
@@ -126,7 +139,6 @@
         animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6 });
     });
 
-    // Stagger feature cards specifically
     inView(".features", () => {
       animate(".feature", { opacity: [0, 1], y: [30, 0] }, { delay: stagger(0.15, { startDelay: 0.2 }), duration: 0.6, easing: "easeOut" });
     });
