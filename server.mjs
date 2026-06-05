@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', async (_req, res) => {
   try {
-    const { data } = await axios.get('https://api.synnabot.azaken.com/status');
+    const { data } = await axios.get('https://synnabotapi.azaken.com/status');
     res.render('index', { status: data.status });
   } catch (err) {
     res.render('index', { status: 'Unavailable' });
